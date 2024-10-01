@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
-import app from "../firebase";
+import app from "../firebase.js";
 
 const auth = getAuth(app);
 
