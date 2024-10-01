@@ -1,4 +1,6 @@
 import React from 'react';
+import  { useEffect, useState } from 'react';
+import QuizGame from './QuizGame';
 import './App.css';
 import firebase from './firebase';
 import 'firebase/auth';
@@ -18,9 +20,10 @@ function App() {
   return (
     <div className="App">
     <header className="App-header">
-      <p>Quiz Game</p>
+      <QuizGame />
     </header>
   </div>
+
   );
 }
 
