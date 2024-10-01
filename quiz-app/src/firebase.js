@@ -1,24 +1,25 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
+// import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDOF-Z_ZFQhuoxPtHQWc58-Iqpouz-4pz0",
-  authDomain: "quizsphere-ec61b.firebaseapp.com",
-  projectId: "quizsphere-ec61b",
-  storageBucket: "quizsphere-ec61b.appspot.com",
-  messagingSenderId: "851061081928",
-  appId: "1:851061081928:web:f6bb85e0d0270449fc957d",
-  measurementId: "G-ZJ4WKMDH0R"
+  apiKey: "AIzaSyAeW-VbVDE20n3AhXW7Aa6CReGJSreletk",
+  authDomain: "quizapp-7a8e4.firebaseapp.com",
+  projectId: "quizapp-7a8e4",
+  storageBucket: "quizapp-7a8e4.appspot.com",
+  messagingSenderId: "131678683918",
+  appId: "1:131678683918:web:537545c230bf6d6cc38d5f"
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+firebase.initializeApp(firebaseConfig);
 
-export default { auth };
+export const auth = firebase.auth();
+export const db = firebase.database();
+
+export default firebase;

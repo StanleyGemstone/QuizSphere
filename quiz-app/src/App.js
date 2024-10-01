@@ -1,46 +1,27 @@
-// src/App.js
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { onAuthStateChanged } from "firebase/auth";
-import auth from "./firebase.js";
-import Navigation from "./components/Navigation";
-import HomePage from "./components/HomePage";
-// import SignUp from './components/SignUp';
-// import SignIn from './components/SignIn';
-import Dashboard from './components/Dashboard';
-import SubjectSelection from './components/SubjectSelection';
-import Quiz from './components/Quiz';
+import React from 'react';
 import './App.css';
+import firebase from './firebase';
+import 'firebase/auth';
+import 'firebase/database'; // or 'firebase/firestore'
 
-const App = () => {
-  const [user, setUser] = useState(null);
-
+function App() {
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        setUser(user);
+        console.log('Logged in as:', user.email);
       } else {
-        setUser(null);
+        console.log('Logged out');
       }
     });
-
-    return () => unsubscribe();
   }, []);
 
   return (
-    <Router>
-      <Navigation user={user} />
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/subjects" element={<SubjectSelection />} />
-          <Route path="/quiz/:subject" element={<Quiz />} />
-        </Routes>
-      </div>
-    </Router>
+    <div className="App">
+    <header className="App-header">
+      <p>Quiz Game</p>
+    </header>
+  </div>
   );
 }
 
 export default App;
-
